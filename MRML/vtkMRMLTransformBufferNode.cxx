@@ -710,7 +710,7 @@ std::string vtkMRMLTransformBufferNode
 {
   std::stringstream xmlstring;
   
-  xmlstring << "<TransformRecorderLog>" << std::endl;
+  xmlstring << "<TraineeDataRecorderLog>" << std::endl;
 
   for ( int i = 0; i < this->GetNumTransforms(); i++ )
   {
@@ -722,7 +722,7 @@ std::string vtkMRMLTransformBufferNode
     xmlstring << this->GetMessageAt(i)->ToXMLString();
   }
 
-  xmlstring << "</TransformRecorderLog>" << std::endl;
+  xmlstring << "</TraineeDataRecorderLog>" << std::endl;
 
   return xmlstring.str();
 }
@@ -731,7 +731,7 @@ std::string vtkMRMLTransformBufferNode
 void vtkMRMLTransformBufferNode
 ::FromXMLElement( vtkXMLDataElement* rootElement )
 {
-  if ( ! rootElement || strcmp( rootElement->GetName(), "TransformRecorderLog" ) != 0 ) 
+  if ( ! rootElement || strcmp( rootElement->GetName(), "TraineeDataRecorderLog" ) != 0 ) 
   {
     return;
   }

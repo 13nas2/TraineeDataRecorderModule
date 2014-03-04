@@ -8,10 +8,10 @@ project(vtkSlicer${MODULE_NAME}ModuleMRML)
 set(module_mrml_name "${PROJECT_NAME}")
 
 # The header '${module_mrml_name}Export.h' will be automatically configured.
-set(module_mrml_export_directive "VTK_SLICER_TRANSFORMRECORDER_MODULE_MRML_EXPORT")
+set(module_mrml_export_directive "VTK_SLICER_TRAINEEDATARECORDER_MODULE_MRML_EXPORT")
 
 # Debug
-#MESSAGE( STATUS "TransformRecorder ====================================" )
+#MESSAGE( STATUS "TraineeDataRecorder ====================================" )
 #MESSAGE( STATUS "Included: ${Slicer_BINARY_DIR}/Modules/Loadable/OpenIGTLinkIF" )
 
 

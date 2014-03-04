@@ -21,10 +21,10 @@
 // Qt includes
 
 // SlicerQt includes
-#include "qSlicerTransformRecorderIO.h"
+#include "qSlicerTraineeDataRecorderIO.h"
 
 // Logic includes
-#include "vtkSlicerTransformRecorderLogic.h"
+#include "vtkSlicerTraineeDataRecorderLogic.h"
 
 // MRML includes
 
@@ -32,61 +32,61 @@
 #include <vtkSmartPointer.h>
 
 //-----------------------------------------------------------------------------
-class qSlicerTransformRecorderIOPrivate
+class qSlicerTraineeDataRecorderIOPrivate
 {
 public:
-  vtkSmartPointer<vtkSlicerTransformRecorderLogic> TransformRecorderLogic;
+  vtkSmartPointer<vtkSlicerTraineeDataRecorderLogic> TraineeDataRecorderLogic;
 };
 
 //-----------------------------------------------------------------------------
-qSlicerTransformRecorderIO::qSlicerTransformRecorderIO( vtkSlicerTransformRecorderLogic* newTransformRecorderLogic, QObject* _parent)
+qSlicerTraineeDataRecorderIO::qSlicerTraineeDataRecorderIO( vtkSlicerTraineeDataRecorderLogic* newTraineeDataRecorderLogic, QObject* _parent)
   : Superclass(_parent)
-  , d_ptr(new qSlicerTransformRecorderIOPrivate)
+  , d_ptr(new qSlicerTraineeDataRecorderIOPrivate)
 {
-  this->setTransformRecorderLogic( newTransformRecorderLogic );
+  this->setTraineeDataRecorderLogic( newTraineeDataRecorderLogic );
 }
 
 //-----------------------------------------------------------------------------
-qSlicerTransformRecorderIO::~qSlicerTransformRecorderIO()
+qSlicerTraineeDataRecorderIO::~qSlicerTraineeDataRecorderIO()
 {
 }
 
 //-----------------------------------------------------------------------------
-void qSlicerTransformRecorderIO::setTransformRecorderLogic(vtkSlicerTransformRecorderLogic* newTransformRecorderLogic)
+void qSlicerTraineeDataRecorderIO::setTraineeDataRecorderLogic(vtkSlicerTraineeDataRecorderLogic* newTraineeDataRecorderLogic)
 {
-  Q_D(qSlicerTransformRecorderIO);
-  d->TransformRecorderLogic = newTransformRecorderLogic;
+  Q_D(qSlicerTraineeDataRecorderIO);
+  d->TraineeDataRecorderLogic = newTraineeDataRecorderLogic;
 }
 
 //-----------------------------------------------------------------------------
-vtkSlicerTransformRecorderLogic* qSlicerTransformRecorderIO::TransformRecorderLogic() const
+vtkSlicerTraineeDataRecorderLogic* qSlicerTraineeDataRecorderIO::TraineeDataRecorderLogic() const
 {
-  Q_D(const qSlicerTransformRecorderIO);
-  return d->TransformRecorderLogic;
+  Q_D(const qSlicerTraineeDataRecorderIO);
+  return d->TraineeDataRecorderLogic;
 }
 
 //-----------------------------------------------------------------------------
-QString qSlicerTransformRecorderIO::description() const
+QString qSlicerTraineeDataRecorderIO::description() const
 {
   return "Transform Buffer";
 }
 
 //-----------------------------------------------------------------------------
-qSlicerIO::IOFileType qSlicerTransformRecorderIO::fileType() const
+qSlicerIO::IOFileType qSlicerTraineeDataRecorderIO::fileType() const
 {
   return QString("Transform Buffer");
 }
 
 //-----------------------------------------------------------------------------
-QStringList qSlicerTransformRecorderIO::extensions() const
+QStringList qSlicerTraineeDataRecorderIO::extensions() const
 {
   return QStringList() << "Transform Buffer (*.xml)";
 }
 
 //-----------------------------------------------------------------------------
-bool qSlicerTransformRecorderIO::load(const IOProperties& properties)
+bool qSlicerTraineeDataRecorderIO::load(const IOProperties& properties)
 {
-  Q_D(qSlicerTransformRecorderIO);
+  Q_D(qSlicerTraineeDataRecorderIO);
   Q_ASSERT( properties.contains("fileName") );
   QString fileName = properties["fileName"].toString();
   
@@ -94,7 +94,7 @@ bool qSlicerTransformRecorderIO::load(const IOProperties& properties)
   importBufferNode.TakeReference( vtkMRMLTransformBufferNode::SafeDownCast( this->mrmlScene()->CreateNodeByClass( "vtkMRMLTransformBufferNode" ) ) );
   importBufferNode->SetScene( this->mrmlScene() );
   this->mrmlScene()->AddNode( importBufferNode );
-  d->TransformRecorderLogic->ImportFromFile( importBufferNode, fileName.toStdString() );
+  d->TraineeDataRecorderLogic->ImportFromFile( importBufferNode, fileName.toStdString() );
 
   return true; // TODO: Check to see read was successful first
 }

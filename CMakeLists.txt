@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 2.8.7)
 
 #-----------------------------------------------------------------------------
 # Module name (usually identique to the directory name)
-set(MODULE_NAME "TransformRecorder")
-set(MODULE_TITLE "Transform Recorder")
+set(MODULE_NAME "TraineeDataRecorder")
+set(MODULE_TITLE "Trainee Data Recorder")
 
 string(TOUPPER ${MODULE_NAME} MODULE_NAME_UPPER)
 

@@ -26,12 +26,12 @@
 #include "vtkMRMLStorageNode.h"
 #include "vtkStringArray.h"
 
-// TransformRecorder includes
-#include "vtkSlicerTransformRecorderModuleMRMLExport.h"
+// TraineeDataRecorder includes
+#include "vtkSlicerTraineeDataRecorderModuleMRMLExport.h"
 
 
 /// Storage nodes has methods to read/write transform bufferss to/from disk.
-class VTK_SLICER_TRANSFORMRECORDER_MODULE_MRML_EXPORT
+class VTK_SLICER_TRAINEEDATARECORDER_MODULE_MRML_EXPORT
 vtkMRMLTransformBufferStorageNode : public vtkMRMLStorageNode
 {
 public:

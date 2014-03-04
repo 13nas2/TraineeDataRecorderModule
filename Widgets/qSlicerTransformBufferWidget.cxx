@@ -75,10 +75,10 @@ qSlicerTransformBufferWidget
 
 
 qSlicerTransformBufferWidget* qSlicerTransformBufferWidget
-::New( vtkSlicerTransformRecorderLogic* newTransformRecorderLogic )
+::New( vtkSlicerTraineeDataRecorderLogic* newTraineeDataRecorderLogic )
 {
   qSlicerTransformBufferWidget* newTransformBufferWidget = new qSlicerTransformBufferWidget();
-  newTransformBufferWidget->TransformRecorderLogic = newTransformRecorderLogic;
+  newTransformBufferWidget->TraineeDataRecorderLogic = newTraineeDataRecorderLogic;
   newTransformBufferWidget->BufferStatus = 0;
   newTransformBufferWidget->BufferTransformsStatus = 0;
   newTransformBufferWidget->BufferMessagesStatus = 0;
@@ -102,7 +102,7 @@ void qSlicerTransformBufferWidget
   Q_D(qSlicerTransformBufferWidget);
 
   d->setupUi(this);
-  this->setMRMLScene( this->TransformRecorderLogic->GetMRMLScene() );
+  this->setMRMLScene( this->TraineeDataRecorderLogic->GetMRMLScene() );
 
   connect( d->BufferNodeComboBox, SIGNAL( currentNodeChanged( vtkMRMLNode* ) ), this, SLOT( onCurrentBufferNodeChanged() ) );
 
@@ -158,7 +158,7 @@ void qSlicerTransformBufferWidget
     }
     
     dialog.setValue( 10 );
-    this->TransformRecorderLogic->ImportFromFile( importBufferNode, filename.toStdString() );
+    this->TraineeDataRecorderLogic->ImportFromFile( importBufferNode, filename.toStdString() );
 
     // Triggers the buffer node changed signal
     d->BufferNodeComboBox->setCurrentNode( NULL );
@@ -180,7 +180,7 @@ void qSlicerTransformBufferWidget
   
   if ( ! filename.isEmpty() )
   {
-    this->TransformRecorderLogic->ExportToFile( this->GetBufferNode(), filename.toStdString() );
+    this->TraineeDataRecorderLogic->ExportToFile( this->GetBufferNode(), filename.toStdString() );
   }
 
   // No need to update the buffer - it is not changed
@@ -193,7 +193,7 @@ void qSlicerTransformBufferWidget
 {
   Q_D(qSlicerTransformBufferWidget);
 
-  if ( this->TransformRecorderLogic == NULL )
+  if ( this->TraineeDataRecorderLogic == NULL )
   {
     return;
   }

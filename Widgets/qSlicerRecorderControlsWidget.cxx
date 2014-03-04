@@ -93,7 +93,7 @@ void qSlicerRecorderControlsWidget
   Q_D(qSlicerRecorderControlsWidget);
 
   d->setupUi(this);
-  this->setMRMLScene( this->BufferWidget->TransformRecorderLogic->GetMRMLScene() );
+  this->setMRMLScene( this->BufferWidget->TraineeDataRecorderLogic->GetMRMLScene() );
 
   connect( d->TransformCheckableComboBox, SIGNAL( checkedNodesChanged() ), this, SLOT( onCheckedTransformsChanged() ) );
 
@@ -128,7 +128,7 @@ void qSlicerRecorderControlsWidget
   // Assume the default is not checked, and check all those that are observed
   for ( int i = 0; i < d->TransformCheckableComboBox->nodeCount(); i++ )
   {
-    if( this->BufferWidget->TransformRecorderLogic->IsObservedTransformNode( this->BufferWidget->GetBufferNode(), d->TransformCheckableComboBox->nodeFromIndex(i) ) )
+    if( this->BufferWidget->TraineeDataRecorderLogic->IsObservedTransformNode( this->BufferWidget->GetBufferNode(), d->TransformCheckableComboBox->nodeFromIndex(i) ) )
     {
 	  d->TransformCheckableComboBox->setCheckState( d->TransformCheckableComboBox->nodeFromIndex(i), Qt::Checked );
     }
@@ -159,11 +159,11 @@ void qSlicerRecorderControlsWidget
   {
     if( d->TransformCheckableComboBox->checkState( d->TransformCheckableComboBox->nodeFromIndex(i) ) == Qt::Checked  )
     {
-      this->BufferWidget->TransformRecorderLogic->AddObservedTransformNode( this->BufferWidget->GetBufferNode(), d->TransformCheckableComboBox->nodeFromIndex(i) );
+      this->BufferWidget->TraineeDataRecorderLogic->AddObservedTransformNode( this->BufferWidget->GetBufferNode(), d->TransformCheckableComboBox->nodeFromIndex(i) );
     }
     else
     {
-      this->BufferWidget->TransformRecorderLogic->RemoveObservedTransformNode( this->BufferWidget->GetBufferNode(), d->TransformCheckableComboBox->nodeFromIndex(i) );
+      this->BufferWidget->TraineeDataRecorderLogic->RemoveObservedTransformNode( this->BufferWidget->GetBufferNode(), d->TransformCheckableComboBox->nodeFromIndex(i) );
     }
   }
 }
@@ -175,8 +175,8 @@ void qSlicerRecorderControlsWidget
 {
   Q_D(qSlicerRecorderControlsWidget);  
   
-  // The observed transforms should be dealt with in the TransformRecorder logic
-  this->BufferWidget->TransformRecorderLogic->SetRecording( this->BufferWidget->GetBufferNode(), true );
+  // The observed transforms should be dealt with in the TraineeDataRecorder logic
+  this->BufferWidget->TraineeDataRecorderLogic->SetRecording( this->BufferWidget->GetBufferNode(), true );
   d->StatusResultLabel->setText( "Recording" );
   
   this->updateWidget();
@@ -188,7 +188,7 @@ void qSlicerRecorderControlsWidget
 {
   Q_D(qSlicerRecorderControlsWidget);  
 
-  this->BufferWidget->TransformRecorderLogic->SetRecording( this->BufferWidget->GetBufferNode(), false );
+  this->BufferWidget->TraineeDataRecorderLogic->SetRecording( this->BufferWidget->GetBufferNode(), false );
   d->StatusResultLabel->setText( "Waiting" );
   
   this->updateWidget();
@@ -200,7 +200,7 @@ void qSlicerRecorderControlsWidget
 {
   Q_D(qSlicerRecorderControlsWidget);
 
-  this->BufferWidget->TransformRecorderLogic->ClearTransforms( this->BufferWidget->GetBufferNode() );
+  this->BufferWidget->TraineeDataRecorderLogic->ClearTransforms( this->BufferWidget->GetBufferNode() );
   
   this->updateWidget();
 }
@@ -211,7 +211,7 @@ void qSlicerRecorderControlsWidget
 {
   Q_D(qSlicerRecorderControlsWidget);
 
-  if ( this->BufferWidget->TransformRecorderLogic == NULL )
+  if ( this->BufferWidget->TraineeDataRecorderLogic == NULL )
   {
     return;
   }
@@ -224,7 +224,7 @@ void qSlicerRecorderControlsWidget
   this->BufferActiveTransformsStatus = this->BufferWidget->BufferActiveTransformsStatus;
 
   // Set the text indicating recording
-  if ( this->BufferWidget->TransformRecorderLogic->GetRecording( this->BufferWidget->GetBufferNode() ) )
+  if ( this->BufferWidget->TraineeDataRecorderLogic->GetRecording( this->BufferWidget->GetBufferNode() ) )
   {
     d->StatusResultLabel->setText( "Recording" );
   }

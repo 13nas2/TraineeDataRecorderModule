@@ -25,17 +25,17 @@
 #include "qSlicerWidget.h"
 
 // FooBar Widgets includes
-#include "qSlicerTransformRecorderModuleWidgetsExport.h"
+#include "qSlicerTraineeDataRecorderModuleWidgetsExport.h"
 #include "ui_qSlicerMessagesWidget.h"
 
-#include "vtkSlicerTransformRecorderLogic.h"
+#include "vtkSlicerTraineeDataRecorderLogic.h"
 #include "vtkMRMLTransformBufferNode.h"
 #include "qSlicerTransformBufferWidget.h"
 
 class qSlicerMessagesWidgetPrivate;
 
 /// \ingroup Slicer_QtModules_CreateModels
-class Q_SLICER_MODULE_TRANSFORMRECORDER_WIDGETS_EXPORT 
+class Q_SLICER_MODULE_TRAINEEDATARECORDER_WIDGETS_EXPORT 
 qSlicerMessagesWidget : public qSlicerWidget
 {
   Q_OBJECT

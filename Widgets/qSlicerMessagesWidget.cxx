@@ -92,7 +92,7 @@ void qSlicerMessagesWidget
   Q_D(qSlicerMessagesWidget);
 
   d->setupUi(this);
-  this->setMRMLScene( this->BufferWidget->TransformRecorderLogic->GetMRMLScene() );
+  this->setMRMLScene( this->BufferWidget->TraineeDataRecorderLogic->GetMRMLScene() );
 
   connect( d->AddMessageButton, SIGNAL( clicked() ), this, SLOT( onAddMessageButtonClicked() ) );
   connect( d->RemoveMessageButton, SIGNAL( clicked() ), this, SLOT( onRemoveMessageButtonClicked() ) ); 
@@ -119,7 +119,7 @@ void qSlicerMessagesWidget
 {
   Q_D(qSlicerMessagesWidget);  
 
-  double time = this->BufferWidget->TransformRecorderLogic->GetCurrentTimestamp();
+  double time = this->BufferWidget->TraineeDataRecorderLogic->GetCurrentTimestamp();
 
   QString messageName = QInputDialog::getText( this, tr("Add Message"), tr("Input text for the new message:") );
 
@@ -129,7 +129,7 @@ void qSlicerMessagesWidget
   }
 
   // Record the timestamp
-  this->BufferWidget->TransformRecorderLogic->AddMessage( this->BufferWidget->GetBufferNode(), messageName.toStdString(), time );
+  this->BufferWidget->TraineeDataRecorderLogic->AddMessage( this->BufferWidget->GetBufferNode(), messageName.toStdString(), time );
   
   this->updateWidget();
 }
@@ -140,7 +140,7 @@ void qSlicerMessagesWidget
 {
   Q_D(qSlicerMessagesWidget);
 
-  this->BufferWidget->TransformRecorderLogic->RemoveMessage( this->BufferWidget->GetBufferNode(), d->MessagesTableWidget->currentRow() );
+  this->BufferWidget->TraineeDataRecorderLogic->RemoveMessage( this->BufferWidget->GetBufferNode(), d->MessagesTableWidget->currentRow() );
 
   this->updateWidget();
 }
@@ -151,7 +151,7 @@ void qSlicerMessagesWidget
 {
   Q_D(qSlicerMessagesWidget);
 
-  this->BufferWidget->TransformRecorderLogic->ClearMessages( BufferWidget->GetBufferNode() );
+  this->BufferWidget->TraineeDataRecorderLogic->ClearMessages( BufferWidget->GetBufferNode() );
   
   this->updateWidget();
 }
@@ -162,7 +162,7 @@ void qSlicerMessagesWidget
 {
   Q_D(qSlicerMessagesWidget);
 
-  if ( this->BufferWidget->TransformRecorderLogic == NULL )
+  if ( this->BufferWidget->TraineeDataRecorderLogic == NULL )
   {
     return;
   }

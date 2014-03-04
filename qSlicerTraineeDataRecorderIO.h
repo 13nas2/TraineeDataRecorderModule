@@ -18,28 +18,28 @@
 
 ==============================================================================*/
 
-#ifndef __qSlicerTransformRecorderIO_h
-#define __qSlicerTransformRecorderIO_h
+#ifndef __qSlicerTraineeDataRecorderIO_h
+#define __qSlicerTraineeDataRecorderIO_h
 
 // SlicerQt includes
 #include "qSlicerFileReader.h"
-class qSlicerTransformRecorderIOPrivate;
+class qSlicerTraineeDataRecorderIOPrivate;
 
 // Slicer includes
-class vtkSlicerTransformRecorderLogic;
+class vtkSlicerTraineeDataRecorderLogic;
 
 //-----------------------------------------------------------------------------
-class qSlicerTransformRecorderIO
+class qSlicerTraineeDataRecorderIO
   : public qSlicerFileReader
 {
   Q_OBJECT
 public:
   typedef qSlicerFileReader Superclass;
-  qSlicerTransformRecorderIO( vtkSlicerTransformRecorderLogic* newTransformRecorderLogic = 0, QObject* parent = 0 );
-  virtual ~qSlicerTransformRecorderIO();
+  qSlicerTraineeDataRecorderIO( vtkSlicerTraineeDataRecorderLogic* newTraineeDataRecorderLogic = 0, QObject* parent = 0 );
+  virtual ~qSlicerTraineeDataRecorderIO();
 
-  void setTransformRecorderLogic( vtkSlicerTransformRecorderLogic* newTransformRecorderLogic);
-  vtkSlicerTransformRecorderLogic* TransformRecorderLogic() const;
+  void setTraineeDataRecorderLogic( vtkSlicerTraineeDataRecorderLogic* newTraineeDataRecorderLogic);
+  vtkSlicerTraineeDataRecorderLogic* TraineeDataRecorderLogic() const;
 
   virtual QString description() const;
   virtual IOFileType fileType() const;
@@ -48,11 +48,11 @@ public:
   virtual bool load( const IOProperties& properties );
   
 protected:
-  QScopedPointer< qSlicerTransformRecorderIOPrivate > d_ptr;
+  QScopedPointer< qSlicerTraineeDataRecorderIOPrivate > d_ptr;
 
 private:
-  Q_DECLARE_PRIVATE( qSlicerTransformRecorderIO );
-  Q_DISABLE_COPY( qSlicerTransformRecorderIO );
+  Q_DECLARE_PRIVATE( qSlicerTraineeDataRecorderIO );
+  Q_DISABLE_COPY( qSlicerTraineeDataRecorderIO );
 };
 
 #endif

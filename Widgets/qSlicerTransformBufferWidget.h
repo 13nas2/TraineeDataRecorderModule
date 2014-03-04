@@ -25,16 +25,16 @@
 #include "qSlicerWidget.h"
 
 // FooBar Widgets includes
-#include "qSlicerTransformRecorderModuleWidgetsExport.h"
+#include "qSlicerTraineeDataRecorderModuleWidgetsExport.h"
 #include "ui_qSlicerTransformBufferWidget.h"
 
-#include "vtkSlicerTransformRecorderLogic.h"
+#include "vtkSlicerTraineeDataRecorderLogic.h"
 #include "vtkMRMLTransformBufferNode.h"
 
 class qSlicerTransformBufferWidgetPrivate;
 
 /// \ingroup Slicer_QtModules_CreateModels
-class Q_SLICER_MODULE_TRANSFORMRECORDER_WIDGETS_EXPORT 
+class Q_SLICER_MODULE_TRAINEEDATARECORDER_WIDGETS_EXPORT 
 qSlicerTransformBufferWidget : public qSlicerWidget
 {
   Q_OBJECT
@@ -44,11 +44,11 @@ public:
   virtual ~qSlicerTransformBufferWidget();
 
   
-  static qSlicerTransformBufferWidget* New( vtkSlicerTransformRecorderLogic* newTransformRecorderLogic );
+  static qSlicerTransformBufferWidget* New( vtkSlicerTraineeDataRecorderLogic* newTraineeDataRecorderLogic );
   
   vtkMRMLTransformBufferNode* GetBufferNode();
 
-  vtkSlicerTransformRecorderLogic* TransformRecorderLogic;
+  vtkSlicerTraineeDataRecorderLogic* TraineeDataRecorderLogic;
 
   // This widget will keep track if the buffer is changed
   unsigned long BufferStatus;
