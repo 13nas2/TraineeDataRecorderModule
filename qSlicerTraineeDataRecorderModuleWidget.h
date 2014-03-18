@@ -46,6 +46,8 @@ protected slots:
   void onSaveButtonClicked();
   void onCreateButtonClicked();
   void onLoginButtonClicked(); 
+  void onOKButtonClicked();
+  void onSaveSceneButtonClicked();
 
 private:
   Q_DECLARE_PRIVATE(qSlicerTraineeDataRecorderModuleWidget);
